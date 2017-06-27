@@ -24,7 +24,7 @@ func init() {
 	// 获取GOPATH
 	_, file, _, _ := runtime.Caller(0)
 	dir := filepath.Dir(file)
-	gopath = file[:len(dir)-len("/github.com/yangchenxing/foochow/logging")]
+	gopath = file[:len(dir)-len("/github.com/Wiqich/foochow/logging")]
 	// 获取本地IP
 	ip = func() string {
 		if infs, err := net.Interfaces(); err == nil && len(infs) > 0 {

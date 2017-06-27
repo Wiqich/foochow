@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/yangchenxing/foochow/stats"
+	"github.com/Wiqich/foochow/stats"
 
 	"bitbucket.org/jesgoo/avalon/encoding"
 )

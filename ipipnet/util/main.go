@@ -8,8 +8,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/yangchenxing/foochow/ipipnet"
-	"github.com/yangchenxing/foochow/logging"
+	"github.com/Wiqich/foochow/ipipnet"
+	"github.com/Wiqich/foochow/logging"
 )
 
 var (

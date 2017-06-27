@@ -2,7 +2,7 @@ package tomlstructs
 
 import (
 	"github.com/BurntSushi/toml"
-	"github.com/yangchenxing/foochow/structs"
+	"github.com/Wiqich/foochow/structs"
 )
 
 func LoadTomlMap(path, include string) (map[string]interface{}, error) {

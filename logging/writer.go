@@ -6,7 +6,7 @@ import (
 	"os"
 	"reflect"
 
-	"github.com/yangchenxing/foochow/structs"
+	"github.com/Wiqich/foochow/structs"
 )
 
 func init() {

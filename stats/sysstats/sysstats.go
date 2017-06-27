@@ -4,7 +4,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/yangchenxing/foochow/stats"
+	"github.com/Wiqich/foochow/stats"
 )
 
 func AddSysStats(prefix string, interval time.Duration) {

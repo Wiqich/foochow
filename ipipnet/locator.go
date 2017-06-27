@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yangchenxing/foochow/logging"
+	"github.com/Wiqich/foochow/logging"
 )
 
 type section struct {
