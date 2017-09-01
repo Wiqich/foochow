@@ -67,24 +67,29 @@ func AddHandler(handler *Handler) {
 	}
 }
 
-func LogEx(skip int, level string, custom map[string]string, format string, args ...interface{}) {
+func LogEx(skip int, level string, custom map[string]string, format string, isdetail bool, args ...interface{}) {
 	targetHandlers := handlers[level]
 	wildHandlers := handlers["*"]
 	if len(targetHandlers) == 0 && len(wildHandlers) == 0 {
 		return
 	}
-	// 采集数据
-	pc, file, line, ok := runtime.Caller(skip)
-	if !ok {
-		file = ""
-		line = 0
-	}
 	funcname := ""
-	if caller := runtime.FuncForPC(pc); caller != nil {
-		funcname = caller.Name()
-	}
-	if strings.HasPrefix(file, gopath) {
-		file = file[len(gopath)+1:]
+	line := 0
+	file := ""
+	if isdetail {
+		// 采集数据
+		pc, file, line2, ok := runtime.Caller(skip)
+		if !ok {
+			file = ""
+			line2 = 0
+		}
+		line = line2
+		if caller := runtime.FuncForPC(pc); caller != nil {
+			funcname = caller.Name()
+		}
+		if strings.HasPrefix(file, gopath) {
+			file = file[len(gopath)+1:]
+		}
 	}
 	event := map[string]string{
 		"level":   level,
@@ -108,25 +113,25 @@ func LogEx(skip int, level string, custom map[string]string, format string, args
 }
 
 func Log(level, format string, args ...interface{}) {
-	LogEx(2, level, nil, format, args...)
+	LogEx(2, level, nil, format, false, args...)
 }
 
 func Debug(format string, args ...interface{}) {
-	LogEx(2, "debug", nil, format, args...)
+	LogEx(2, "debug", nil, format, true, args...)
 }
 
 func Info(format string, args ...interface{}) {
-	LogEx(2, "info", nil, format, args...)
+	LogEx(2, "info", nil, format, true, args...)
 }
 
 func Warn(format string, args ...interface{}) {
-	LogEx(2, "warn", nil, format, args...)
+	LogEx(2, "warn", nil, format, true, args...)
 }
 
 func Error(format string, args ...interface{}) {
-	LogEx(2, "error", nil, format, args...)
+	LogEx(2, "error", nil, format, true, args...)
 }
 
 func Fatal(format string, args ...interface{}) {
-	LogEx(2, "fatal", nil, format, args...)
+	LogEx(2, "fatal", nil, format, true, args...)
 }
